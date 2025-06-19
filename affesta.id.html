@@ -1,0 +1,1355 @@
+
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AFFESTA VOL. 1 - Al Falah Festival</title>
+    <link rel="shortcut icon" href="https://raw.githubusercontent.com/MQSTH/affesta.com/refs/heads/main/logo.png" type="image/x-icon" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        line-height: 1.6;
+        color: #262626;
+        overflow-x: hidden;
+      }
+
+      /* Color Variables */
+      :root {
+        --yellow: #efb200;
+        --purple: #aa00f9;
+        --light-gray: #efefef;
+        --dark-gray: #262626;
+        --tiktok-color: #ff0050;
+        --youtube-color: #ff0000;
+        --instagram-color: #e4405f;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px 20px;
+      }
+
+      .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: transparent;
+        padding: 15px 0;
+        z-index: 1000;
+        transition: all 0.3s ease;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .navbar.scrolled {
+        background: rgb(255, 255, 255);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        padding: 17px 0;
+      }
+
+      .navbar-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .navbar-logo img {
+        height: 45px;
+        width: auto;
+      }
+
+      .navbar-menu {
+        display: flex;
+        list-style: none;
+        gap: 25px;
+        margin: 0;
+      }
+
+      .navbar-menu li a {
+        text-decoration: none;
+        color: var(--light-gray);
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.3s ease;
+        position: relative;
+        padding: 10px 0;
+      }
+
+      .navbar-menu li a.scrolled {
+        color: var(--dark-gray);
+      }
+
+      .navbar-menu li a:hover {
+        color: var(--purple);
+        transform: translateY(-2px);
+      }
+
+      .navbar-menu li a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 3px;
+        bottom: 0;
+        left: 0;
+        background: linear-gradient(90deg, var(--yellow), var(--purple));
+        transition: width 0.3s ease;
+      }
+
+      .navbar-menu li a:hover::after {
+        width: 100%;
+      }
+
+      /* Hamburger Menu Styles */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 4px;
+        z-index: 1001;
+      }
+
+      .hamburger span {
+        width: 25px;
+        height: 3px;
+        background-color: var(--light-gray);
+        transition: all 0.3s ease;
+        transform-origin: center;
+      }
+
+      .hamburger.scrolled span {
+        background-color: var(--dark-gray);
+      }
+
+      .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+      }
+
+      .hero-section {
+        min-height: 100vh;
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+          url("https://raw.githubusercontent.com/MQSTH/affesta.com/refs/heads/main/IMG_20250614_185934.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        padding: 100px 20px 50px;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        max-width: 800px;
+        width: 100%;
+      }
+
+      .hero-title {
+        font-family: "Playfair Display", serif;
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 18px;
+        line-height: 1.1;
+        background: linear-gradient(45deg, var(--purple), var(--yellow));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .hero-subtitle {
+        font-size: 1.25rem;
+        font-style: italic;
+        margin-bottom: 12px;
+        opacity: 0.9;
+        color: var(--light-gray);
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+      }
+
+      .hero-text {
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: var(--purple);
+        margin-bottom: 35px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Countdown dengan styling yang lebih baik */
+      .countdown-container {
+        background: linear-gradient(rgba(0, 0, 0, 90%), rgba(0, 0, 0, 90%)),
+          url("https://raw.githubusercontent.com/MQSTH/affesta.com/refs/heads/main/download.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        padding: 30px;
+        border-radius: 20px;
+        color: white;
+        box-shadow: 0 10px 30px rgba(170, 0, 249, 0.3);
+        max-width: 600px;
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      .countdown-title {
+        font-size: 1rem;
+        margin-bottom: 20px;
+        opacity: 0.9;
+        text-align: center;
+      }
+
+      .countdown-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+      }
+
+      .countdown-item {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        padding: 20px 10px;
+        border-radius: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        text-align: center;
+      }
+
+      .countdown-number {
+        font-size: 1.8rem;
+        font-weight: 700;
+        display: block;
+        line-height: 1;
+      }
+
+      .countdown-label {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        opacity: 0.8;
+        margin-top: 8px;
+      }
+
+      .about-section {
+        background-color: white;
+        padding: 80px 0;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .section-title {
+        font-family: "Playfair Display", serif;
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+        background: linear-gradient(45deg, var(--purple), var(--yellow));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 700;
+      }
+
+      /* Content Cards */
+      .content-card {
+        background: linear-gradient(135deg, var(--purple), var(--yellow));
+        padding: 90px;
+        border-radius: 20px;
+        margin-bottom: 50px;
+        color: white;
+        text-align: center;
+      }
+
+      .content-card h3 {
+        text-decoration: underline;
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+        font-weight: 700;
+      }
+
+      .content-card p {
+        font-size: 0.95rem;
+        line-height: 1.8;
+        max-width: 900px;
+        margin: 0 auto 20px;
+        text-align: justify;
+      }
+
+      .feature-card {
+        display: flex;
+        align-items: flex-start;
+        gap: 30px;
+        margin-bottom: 40px;
+        padding: 30px;
+        border-radius: 15px;
+        background: var(--light-gray);
+      }
+
+      .feature-card:nth-child(even) {
+        flex-direction: row-reverse;
+        background: linear-gradient(
+          135deg,
+          rgba(170, 0, 249, 0.05),
+          rgba(239, 178, 0, 0.05)
+        );
+      }
+
+      .feature-image {
+        flex: 0 0 250px;
+        aspect-ratio: 9 / 16;
+        width: 100%;
+      }
+
+      .feature-image img {
+        width: 100%;
+        object-fit: contain;
+        border-radius: 12px;
+        display: block;
+      }
+
+      .feature-content {
+        flex: 1;
+        padding: 5px 0;
+      }
+
+      .feature-content h3 {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+        color: var(--purple);
+        font-weight: 600;
+        line-height: 1.3;
+        text-decoration: underline;
+      }
+
+      .feature-content p {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        text-align: justify;
+        color: var(--dark-gray);
+        margin-bottom: 15px;
+      }
+
+      .info-card {
+        background-color: var(--light-gray);
+        padding: 40px 30px;
+        border-radius: 15px;
+        margin-bottom: 40px;
+        text-align: center;
+      }
+
+      .info-card h3 {
+        font-size: 1.35rem;
+        margin-bottom: 20px;
+        color: var(--purple);
+        font-weight: 600;
+        text-decoration: underline;
+      }
+
+      .info-card p {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        color: var(--dark-gray);
+        max-width: 800px;
+        margin: 0 auto 25px;
+        text-align: justify;
+      }
+
+      .registration-section {
+        padding: 80px 0;
+        position: relative;
+      }
+
+      .registration-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0.3;
+      }
+
+      .section-subtitle {
+        text-align: center;
+        color: var(--dark-gray);
+        font-size: 1rem;
+        margin-top: 10px;
+        opacity: 0.8;
+      }
+
+      .registration-container {
+        margin: 0;
+        position: relative;
+        z-index: 2;
+      }
+
+      .registration-form {
+        background: white;
+        padding: 60px;
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(170, 0, 249, 0.15);
+        border: 2px solid transparent;
+        background-clip: padding-box;
+        position: relative;
+      }
+
+      .registration-form::before {
+        content: "";
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        background: linear-gradient(45deg, var(--purple), var(--yellow));
+        border-radius: 22px;
+        z-index: -1;
+      }
+
+      .form-group {
+        margin-bottom: 25px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: var(--dark-gray);
+        font-size: 0.95rem;
+      }
+
+      .form-group input,
+      .form-group select {
+        width: 100%;
+        padding: 15px 20px;
+        border: 2px solid var(--light-gray);
+        border-radius: 12px;
+        font-size: 0.95rem;
+        font-family: "Poppins", sans-serif;
+        transition: all 0.3s ease;
+        background: white;
+      }
+
+      .form-group input:focus,
+      .form-group select:focus {
+        outline: none;
+        border-color: var(--purple);
+        box-shadow: 0 0 0 3px rgba(170, 0, 249, 0.1);
+        transform: translateY(-2px);
+      }
+
+      .form-group input::placeholder {
+        color: #999;
+        opacity: 0.7;
+      }
+
+      .form-group select {
+        cursor: pointer;
+        appearance: none;
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23AA00F9"><path d="M7 10l5 5 5-5z"/></svg>');
+        background-repeat: no-repeat;
+        background-position: right 15px center;
+        background-size: 20px;
+      }
+
+      .submit-btn {
+        width: 100%;
+        background: linear-gradient(135deg, var(--purple), var(--yellow));
+        color: white;
+        border: none;
+        padding: 18px 30px;
+        border-radius: 15px;
+        font-size: 1rem;
+        font-weight: 600;
+        font-family: "Poppins", sans-serif;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        box-shadow: 0 8px 25px rgba(170, 0, 249, 0.3);
+      }
+
+      .submit-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 35px rgba(170, 0, 249, 0.4);
+      }
+
+      .submit-btn:active {
+        transform: translateY(-1px);
+      }
+
+      .btn-icon {
+        font-size: 1.3rem;
+        animation: bounce 2s infinite;
+      }
+      
+      .footer-section {
+        background-color: var(--dark-gray);
+        padding: 50px 0 20px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        margin-bottom: 30px;
+      }
+
+      .footer-column {
+        flex-direction: column;
+      }
+
+      .footer-title {
+        color: white;
+        font-size: 1.5rem;
+        margin-bottom: 25px;
+        font-weight: 600;
+      }
+
+      .social-links {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+      }
+
+      .social-link {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        transition: all 0.3s ease;
+        padding: 8px 0;
+        border-radius: 12px;
+        backdrop-filter: blur(10px);
+        color: white;
+        text-decoration: none;
+        width: fit-content;
+      }
+
+      .social-link:hover {
+        transform: translateY(-3px) scale(1.03);
+      }
+
+      /* Hover color + drop shadow for each platform */
+      .social-link.tiktok:hover {
+        color: var(--tiktok-color);
+        filter: drop-shadow(0 0 6px var(--tiktok-color));
+      }
+
+      .social-link.instagram:hover {
+        color: var(--instagram-color);
+        filter: drop-shadow(0 0 6px var(--instagram-color));
+      }
+
+      /* Icon style: use currentColor so color comes from parent */
+      .social-icon {
+        width: 24px;
+        height: 24px;
+        fill: currentColor;
+        transition: all 0.3s ease;
+        flex-shrink: 0;
+      }
+
+      .social-text {
+        font-size: 0.9rem;
+        font-weight: 500;
+        letter-spacing: 0.3px;
+      }
+
+      .lomba {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px 15px;
+        align-items: flex-start;
+      }
+
+      .lomba-link {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        transition: all 0.3s ease;
+        padding: 8px 0;
+        border-radius: 12px;
+        color: white;
+        text-decoration: none;
+        width: fit-content;
+      }
+
+      .lomba-link:hover {
+        transform: translateY(-3px) scale(1.03);
+      }
+
+      .lomba-icon {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        object-fit: cover;
+        flex-shrink: 0;
+      }
+
+      .lomba-text {
+        font-size: 0.9rem;
+        font-weight: 500;
+        letter-spacing: 0.3px;
+      }
+
+      .footer-text {
+        color: var(--light-gray);
+        font-size: 0.8rem;
+        opacity: 0.7;
+        border-top: 1px solid rgba(239, 239, 239, 0.2);
+        padding-top: 20px;
+        margin-top: 20px;
+        line-height: 1.5;
+        text-align: center;
+      }
+
+      .footer-text p {
+        margin-bottom: 3px;
+      }
+
+      .footer-text p:last-child {
+        margin-bottom: 0;
+      }
+      /* Smooth Scrolling */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateY(0);
+        }
+        40% {
+          transform: translateY(-5px);
+        }
+        60% {
+          transform: translateY(-3px);
+        }
+      }
+
+      /* Footer dengan struktur yang lebih baik */
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .hero-content {
+        animation: fadeInUp 1s ease-out;
+      }
+
+      /* Responsive Styles */
+      
+      /* 1024px breakpoint */
+      @media screen and (max-width: 1024px) {
+        .container {
+          padding: 20px 15px;
+        }
+
+        .navbar-container {
+          padding: 0 15px;
+        }
+
+        .hero-title {
+          font-size: 3rem;
+        }
+
+        .hero-subtitle {
+          font-size: 1.1rem;
+        }
+
+        .section-title {
+          font-size: 2.2rem;
+        }
+
+        .content-card {
+          padding: 60px 40px;
+        }
+
+        .feature-card {
+          gap: 20px;
+          padding: 25px;
+        }
+
+        .feature-image {
+          flex: 0 0 200px;
+        }
+
+        .registration-form {
+          padding: 40px;
+        }
+
+        .countdown-container {
+          padding: 25px;
+        }
+
+        .countdown-item {
+          padding: 15px 8px;
+        }
+
+        .countdown-number {
+          font-size: 1.5rem;
+        }
+      }
+
+      /* 768px breakpoint */
+      @media screen and (max-width: 768px) {
+        .navbar-menu {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 100%;
+          height: 100vh;
+          background: rgba(0, 0, 0, 0.95);
+          backdrop-filter: blur(20px);
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 40px;
+          transition: right 0.3s ease;
+          z-index: 999;
+        }
+
+        .navbar-menu.active {
+          right: 0;
+        }
+
+        .navbar-menu li a {
+          font-size: 1.5rem;
+          color: var(--light-gray);
+          padding: 20px 0;
+        }
+
+        .hamburger {
+          display: flex;
+        }
+
+        .hero-section {
+          padding: 120px 15px 50px;
+          background-attachment: scroll;
+        }
+
+        .hero-title {
+          font-size: 2.5rem;
+        }
+
+        .hero-subtitle {
+          font-size: 1rem;
+        }
+
+        .hero-text {
+          font-size: 1rem;
+        }
+
+        .countdown-container {
+          padding: 20px;
+          margin: 0 10px;
+        }
+
+        .countdown-grid {
+          gap: 10px;
+        }
+
+        .countdown-item {
+          padding: 12px 6px;
+        }
+
+        .countdown-number {
+          font-size: 1.3rem;
+        }
+
+        .countdown-label {
+          font-size: 0.7rem;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .content-card {
+          padding: 40px 25px;
+          margin-bottom: 30px;
+        }
+
+        .content-card h3 {
+          font-size: 1.4rem;
+        }
+
+        .feature-card {
+          flex-direction: column;
+          gap: 20px;
+          padding: 20px;
+          margin-bottom: 30px;
+        }
+
+        .feature-card:nth-child(even) {
+          flex-direction: column;
+        }
+
+        .feature-image {
+          flex: none;
+          width: 100%;
+          max-width: 300px;
+          margin: 0 auto;
+        }
+
+        .info-card {
+          padding: 30px 20px;
+          margin-bottom: 30px;
+        }
+
+        .registration-form {
+          padding: 30px 20px;
+        }
+
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+
+        .lomba {
+          grid-template-columns: 1fr;
+          gap: 15px;
+        }
+
+        .about-section,
+        .registration-section {
+          padding: 60px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar" id="navbar">
+      <div class="navbar-container">
+        <div class="navbar-logo">
+          <img src="https://raw.githubusercontent.com/MQSTH/affesta.com/refs/heads/main/logo.png" alt="AFFESTA Logo" />
+        </div>
+        <ul class="navbar-menu" id="navbarMenu">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#pendaftaran">Pendaftaran</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+
+    <section id="home" class="hero-section">
+      <div class="hero-content">
+        <h1 class="hero-title">AFFESTA VOL. 1</h1>
+        <p class="hero-subtitle">Welcome to Al Falah Festival volume 1</p>
+        <p class="hero-text">Don't miss the hype!</p>
+
+        <div class="countdown-container">
+          <h3 class="countdown-title">Event Dimulai Dalam:</h3>
+          <div class="countdown-grid">
+            <div class="countdown-item">
+              <span class="countdown-number" id="days">00</span>
+              <span class="countdown-label">Days</span>
+            </div>
+            <div class="countdown-item">
+              <span class="countdown-number" id="hours">00</span>
+              <span class="countdown-label">Hours</span>
+            </div>
+            <div class="countdown-item">
+              <span class="countdown-number" id="minutes">00</span>
+              <span class="countdown-label">Minutes</span>
+            </div>
+            <div class="countdown-item">
+              <span class="countdown-number" id="seconds">00</span>
+              <span class="countdown-label">Seconds</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Tentang AFFESTA</h2>
+        </div>
+
+        <div class="content-card">
+          <h3>Apa itu AFFESTA?</h3>
+          <p>
+            AFFESTA adalah kegiatan yang akan dijalankan oleh Ikatan Pelajar
+            Madrasah Al Falah (IPMA) Komisariat Aliyah sebagai acara puncak
+            selama satu periode. AFFESTA merupakan singkatan kata dari "Al Falah
+            Festival". AFFESTA juga merupakan sebuah acara yang diinovasikan
+            dari acara ASA atau Al Falah Sport and Art yang sudah berjalan
+            selama 7 tahun. Perbedaan dari ASA adalah AFFESTA lebih terfokus
+            kepada perlombaan di bidang keterampilan dan seni.
+          </p>
+          <br />
+          <h3>Makna Tema Śaktisamyogah</h3>
+          <p>
+            "Śaktisamyogah" diambil dari kata sansekerta yang dapat diartikan
+            sebagai: Penyatuan energi spiritual atau kekuatan batin untuk
+            mencapai kesadaran dan pencerahan yang lebih tinggi. Maksudnya di
+            sini adalah Penyatuan energi dan penggabungan kekuatan antara
+            panitia pelaksana dan para peserta yang berasal dari berbagai
+            sekolah.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-image">
+            <img src="https://raw.githubusercontent.com/MQSTH/affesta.com/refs/heads/main/3_20250606_234838_0001.png" alt="Filosofi Warna" />
+          </div>
+          <div class="feature-content">
+            <h3>Warna ungu pada latar belakang & huruf</h3>
+            <p>
+              Warna ungu pada latar belakang dan huruf melambangkan kreativitas,
+              spiritualitas, dan kebijaksanaan. Ini mencerminkan kemampuan para
+              panitia untuk menciptakan sesuatu yang baru, yaitu kegiatan
+              AFFESTA. Ungu juga menunjukkan rasa keterhubungan yang mendalam
+              terhadap acara ini serta kemampuan untuk mengambil keputusan
+              secara tepat dan bijaksana dalam menghadapi berbagai situasi,
+              termasuk tantangan yang muncul.
+            </p>
+            <h3>Warna oranye pada huruf</h3>
+            <p>
+              Warna oranye melambangkan kehangatan, semangat, optimisme, dan
+              kreativitas. Ini menciptakan suasana yang nyaman, suportif, dan
+              penuh kebersamaan di antara panitia AFFESTA. Semangat ini
+              mendorong para panitia untuk menjalankan kegiatan dengan harapan
+              dan keyakinan bahwa hasil akhirnya akan membawa dampak positif.
+            </p>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <h3>Motif Batik Pada huruf</h3>
+          <p>
+            Motif batik pada huruf, yaitu Batik Parang. Batik Parang adalah
+            motif tertua asal Jawa yang mempunyai makna tidak pantang menyerah.
+            Motifnya yang seperti ombak mengibaratkan ombak laut yang tidak akan
+            berhenti bergerak seperti semangat yang pantang menyerah. Ini
+            menunjukkan panitia AFFESTA tidak mudah menyerah dan berani
+            mengambil risiko dan berbagai tantangan.
+          </p>
+          <br />
+          <h3>Bentuk keris di bagian bawah</h3>
+          <p>
+            Keris pada huruf F memiliki simbol perjalanan hidup, ketahanan, dan
+            kekuatan batin. Keris melambangkan keinginan, harapan, dan cita-cita
+            panitia AFFESTA dengan bertahan dan kuat satu sama lain demi
+            mencapai tujuan AFFESTA berjalan dengan baik.
+          </p>
+          <br />
+          <h3>Paruh garuda</h3>
+          <p>
+            Paruh Garuda dalam logo tidak hanya merupakan bagian dari desain,
+            tetapi juga simbol yang melambangkan kekuatan, tenaga, dan semangat
+            para panitia AFFESTA.
+          </p>
+          <br />
+          <h3>Daun melilit pada huruf "A"</h3>
+          <p>
+            Daun melilit di huruf sebagai simbol ikatan dan hubungan yang erat.
+            Menunjukkan bagaimana panitia AFFESTA dapat saling mendukung dan
+            bergantung untuk mencapai tujuan bersama.
+          </p>
+          <br />
+          <h3>Kilat/petir pada latar belakang</h3>
+          <p>
+            Petir pada latar belakang melambangkan kekuatan, energi, dan
+            perubahan. Maksudnya adalah para panitia AFFESTA yang saling
+            menguatkan satu sama lain untuk membuat dan membangun bersama
+            inovasi dengan mengeluarkan tenaga maksimal baik secara fisik maupun
+            mental.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="pendaftaran" class="registration-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Pendaftaran Lomba</h2>
+          <p class="section-subtitle">
+            Daftar sekarang dan jadilah bagian dari AFFESTA Vol. 1!
+          </p>
+        </div>
+
+        <div class="registration-container">
+          <form id="registrationForm" class="registration-form">
+            <div class="form-group">
+              <label for="asalSekolah">Asal Sekolah</label>
+              <input
+                type="text"
+                id="asalSekolah"
+                name="asalSekolah"
+                placeholder="Masukkan nama sekolah Anda"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="namaPeserta">Nama Peserta</label>
+              <input
+                type="text"
+                id="namaPeserta"
+                name="namaPeserta"
+                placeholder="Masukkan nama lengkap peserta"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="jenisLomba">Jenis Mata Lomba</label>
+              <select id="jenisLomba" name="jenisLomba" placeholder="Masukkan nama lengkap peserta"required>
+                <option value="Ratoe Jaroh">Ratoe Jaroh</option>
+                <option value="Hadroh Banjari">Hadroh Banjari</option>
+                <option value="Scout Skill Competition (SMP)">
+                  Scout Skill Competition (SMP)
+                </option>
+                <option value="Scout Skill Competition (SMA)">
+                  Scout Skill Competition (SMA)
+                </option>
+              </select>
+            </div>
+
+            <button type="submit" class="submit-btn">
+              <span class="btn-text">Daftar Sekarang</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer id="contact" class="footer-section">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3 class="footer-title">Follow Us</h3>
+            <div class="social-links">
+              <a
+                href="https://www.tiktok.com/@affesta.id"
+                target="_blank"
+                class="social-link tiktok"
+              >
+                <svg
+                  class="social-icon"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M19.321 5.562a5.124 5.124 0 0 1-.443-.258 6.228 6.228 0 0 1-1.137-.966c-.849-.849-1.532-1.849-1.532-3.338h-2.8v11.543c0 1.93-1.57 3.5-3.5 3.5s-3.5-1.57-3.5-3.5 1.57-3.5 3.5-3.5c.343 0 .677.05 1 .143V6.365c-.321-.02-.646-.031-.975-.031-3.866 0-7 3.134-7 7s3.134 7 7 7 7-3.134 7-7V8.832a9.884 9.884 0 0 0 4.657 1.168v-2.8c-1.14 0-2.233-.35-3.179-.896z"
+                  />
+                </svg>
+                <span class="social-text">@affesta.id</span>
+              </a>
+
+              <a
+                href="https://www.instagram.com/affesta.id"
+                target="_blank"
+                class="social-link instagram"
+              >
+                <svg
+                  class="social-icon"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                  />
+                </svg>
+                <span class="social-text">@affesta.id</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-column">
+            <h3 class="footer-title">Contact Person</h3>
+            <div class="lomba">
+              <a
+                href="http://wa.me/6288211311433"
+                target="_blank"
+                class="lomba-link ratoe"
+              >
+                <img
+                  src="https://raw.githubusercontent.com/MQSTH/affesta.com/refs/heads/main/ratoe_jaroe.png"
+                  alt="Ratoe Jaroe"
+                  class="lomba-icon"
+                />
+                <span class="lomba-text">Ratoe Jaroe</span>
+              </a>
+
+              <a href="#" target="_blank" class="lomba-link hadrah">
+                <img
+                  src="https://raw.githubusercontent.com/MQSTH/affesta.com/refs/heads/main/hadroh_banjari.png"
+                  alt="Hadrah Banjari"
+                  class="lomba-icon"
+                />
+                <span class="lomba-text">Hadrah Banjari</span>
+              </a>
+
+              <a href="#" target="_blank" class="lomba-link ssc-smp">
+                <img
+                  src="https://raw.githubusercontent.com/MQSTH/affesta.com/refs/heads/main/ssc_smp.png"
+                  alt="Scout Skill Competition SMP"
+                  class="lomba-icon"
+                />
+                <span class="lomba-text">SSC - SMP</span>
+              </a>
+
+              <a href="#" target="_blank" class="lomba-link ssc-sma">
+                <img
+                  src="https://raw.githubusercontent.com/MQSTH/affesta.com/refs/heads/main/ssc_sma.png"
+                  alt="Scout Skill Competition SMA"
+                  class="lomba-icon"
+                />
+                <span class="lomba-text">SSC - SMA</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-text">
+          <p>&copy;2025 gigimerah</p>
+          <p>All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+  <script>
+    function updateCountdown() {
+      const targetDate = new Date("2026-05-01T08:00:00+07:00").getTime();
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor(
+        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("days").textContent = days
+        .toString()
+        .padStart(2, "0");
+      document.getElementById("hours").textContent = hours
+        .toString()
+        .padStart(2, "0");
+      document.getElementById("minutes").textContent = minutes
+        .toString()
+        .padStart(2, "0");
+      document.getElementById("seconds").textContent = seconds
+        .toString()
+        .padStart(2, "0");
+
+      if (distance < 0) {
+        document.getElementById("days").textContent = "00";
+        document.getElementById("hours").textContent = "00";
+        document.getElementById("minutes").textContent = "00";
+        document.getElementById("seconds").textContent = "00";
+      }
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    function scrollToSection(sectionId) {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    }
+
+    window.addEventListener("scroll", function () {
+      const navbar = document.getElementById("navbar");
+      const navLinks = document.querySelectorAll(".navbar-menu li a");
+      const hamburger = document.getElementById("hamburger");
+
+      if (window.scrollY > 460) {
+        navbar.classList.add("scrolled");
+        hamburger.classList.add("scrolled");
+        navLinks.forEach((link) => {
+          link.classList.add("scrolled");
+        });
+      } else {
+        navbar.classList.remove("scrolled");
+        hamburger.classList.remove("scrolled");
+        navLinks.forEach((link) => {
+          link.classList.remove("scrolled");
+        });
+      }
+
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+          }
+        });
+      }, observerOptions);
+
+      document.addEventListener("DOMContentLoaded", function () {
+        document
+          .querySelectorAll(".feature-card, .content-card, .info-card")
+          .forEach((el) => {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(30px)";
+            el.style.transition = "all 0.8s ease-out";
+            observer.observe(el);
+          });
+      });
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("registrationForm");
+
+      // Contact numbers untuk setiap jenis lomba
+      const contactNumbers = {
+        "Ratoe Jaroh": "6282118225264",
+        "Hadroh Banjari": "6289876543210",
+        "Scout Skill Competition (SMP)": "6281122334455",
+        "Scout Skill Competition (SMA)": "6285566778899",
+      };
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        // Ambil data dari form
+        const asalSekolah = document.getElementById("asalSekolah").value.trim();
+        const namaPeserta = document.getElementById("namaPeserta").value.trim();
+        const jenisLomba = document.getElementById("jenisLomba").value;
+
+        // Validasi form
+        if (!asalSekolah || !namaPeserta || !jenisLomba) {
+          alert("Mohon lengkapi semua data terlebih dahulu!");
+          return;
+        }
+
+        // Dapatkan nomor contact person
+        const contactNumber = contactNumbers[jenisLomba];
+
+        // Buat pesan WhatsApp
+        const message = `Halo kak 👋 Perkenalkan, aku ${namaPeserta}. Dari ${asalSekolah}. Aku tertarik nih kak sama lombanya, yaitu *${jenisLomba}*! 😄
+
+Boleh minta info lebih lanjut soal pendaftarannya ya kak? Makasih banyak! 🙏`;
+
+        // Buat URL WhatsApp
+        const whatsappUrl = `https://wa.me/${contactNumber}?text=${encodeURIComponent(
+          message
+        )}`;
+
+        // Buka WhatsApp di tab baru
+        window.open(whatsappUrl, "_blank");
+
+        // Reset form setelah submit
+        form.reset();
+
+        // Tampilkan pesan konfirmasi
+        alert(
+          "Anda akan diarahkan ke WhatsApp. Silakan kirim pesan untuk menyelesaikan pendaftaran!"
+        );
+      });
+
+      // Animasi saat scroll
+      const registrationSection = document.querySelector(
+        ".registration-section"
+      );
+      const observer = new IntersectionObserver(
+        function (entries) {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = "1";
+              entry.target.style.transform = "translateY(0)";
+            }
+          });
+        },
+        {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px",
+        }
+      );
+
+      if (registrationSection) {
+        registrationSection.style.opacity = "0";
+        registrationSection.style.transform = "translateY(30px)";
+        registrationSection.style.transition = "all 0.8s ease-out";
+        observer.observe(registrationSection);
+      }
+    });
+
+    // Hamburger menu functionality
+    document.addEventListener("DOMContentLoaded", function () {
+      const hamburger = document.getElementById("hamburger");
+      const navbarMenu = document.getElementById("navbarMenu");
+      const navLinks = document.querySelectorAll(".navbar-menu li a");
+
+      hamburger.addEventListener("click", function () {
+        hamburger.classList.toggle("active");
+        navbarMenu.classList.toggle("active");
+      });
+
+      // Close menu when clicking on a link
+      navLinks.forEach(link => {
+        link.addEventListener("click", function () {
+          hamburger.classList.remove("active");
+          navbarMenu.classList.remove("active");
+        });
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener("click", function (e) {
+        if (!hamburger.contains(e.target) && !navbarMenu.contains(e.target)) {
+          hamburger.classList.remove("active");
+          navbarMenu.classList.remove("active");
+        }
+      });
+    });
+  </script>
+</html>
